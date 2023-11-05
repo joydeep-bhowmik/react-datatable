@@ -120,7 +120,7 @@ export const Datatable = ({
             padding: "10px 0px",
           }}
         >
-          {elements}
+          {elements && elements}
           <div
             style={{
               marginLeft: "auto",
@@ -268,36 +268,40 @@ export const Datatable = ({
           </tbody>
         </table>
       </article>
-      <section className="pagination">
-        <button
-          onClick={() => {
-            if (apiParams.page && apiParams.page > 1) {
-              const updatedApiParams = {
-                ...apiParams,
-                page: apiParams.page - 1,
-              };
-              getApiParams(updatedApiParams);
-              setApiParams(updatedApiParams);
-            }
-          }}
-        >
-          Previous
-        </button>
-        <button
-          onClick={() => {
-            if (apiParams.page) {
-              const updatedApiParams = {
-                ...apiParams,
-                page: apiParams.page + 1,
-              };
-              getApiParams(updatedApiParams);
-              setApiParams(updatedApiParams);
-            }
-          }}
-        >
-          Next
-        </button>
-      </section>
+      {pagination && (
+        <section className="pagination">
+          <button
+            onClick={() => {
+              if (apiParams.page && apiParams.page > 1) {
+                const updatedApiParams = {
+                  ...apiParams,
+                  page: apiParams.page - 1,
+                };
+                getApiParams(updatedApiParams);
+                setApiParams(updatedApiParams);
+              }
+            }}
+            disabled={apiParams.page && apiParams.page < 2 ? true : false}
+          >
+            Previous
+          </button>
+          <button
+            onClick={() => {
+              if (apiParams.page) {
+                const updatedApiParams = {
+                  ...apiParams,
+                  page: apiParams.page + 1,
+                };
+                getApiParams(updatedApiParams);
+                setApiParams(updatedApiParams);
+              }
+            }}
+            disabled={data.length ? false : true}
+          >
+            Next
+          </button>
+        </section>
+      )}
     </section>
   );
 };
