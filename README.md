@@ -1,4 +1,3 @@
-Certainly! Here's a template for a README file that you can use to document your `Datatable` component:
 
 # Datatable Component Documentation
 
