@@ -102,11 +102,11 @@ export const Datatable = ({
       if (getApiParams) {
         getApiParams(updatedApiParams);
       }
+      // Call the sort function with the new sort details
+      sort(column.key, newSortDirection, updatedSortDetails);
 
       setApiParams(updatedApiParams);
       setSortDetails(updatedSortDetails);
-      // Call the sort function with the new sort details
-      sort(column.key, newSortDirection, updatedSortDetails);
     }
   };
 
@@ -137,18 +137,18 @@ export const Datatable = ({
               value={apiParams.key} // Use the key from your state
               onChange={(e) => {
                 const newKey = e.target.value;
+                const updatedApiParams = { ...apiParams, key: newKey };
 
                 // If you're using state to manage apiParams, you should update it here
                 if (getApiParams) {
-                  const updatedApiParams = { ...apiParams, key: newKey };
                   getApiParams(updatedApiParams);
-                  setApiParams(updatedApiParams);
                 }
 
                 // If you also want to use this key for searching, call the search function here
                 if (search) {
                   search(newKey, data);
                 }
+                setApiParams(updatedApiParams);
               }}
             />
           </div>
