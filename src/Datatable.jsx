@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./datatable.css";
+
 
 export const defaultSearch = ({ data, key }) => {
   key = key.toLowerCase(); // Convert search term to lowercase for case-insensitive search
