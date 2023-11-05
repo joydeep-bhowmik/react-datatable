@@ -1,5 +1,8 @@
 import { useState } from "react";
+
 import { Datatable, defaultSearch, defaultSort } from "../src/Datatable";
+// in your case
+// import { Datatable, defaultSearch, defaultSort } from "joydeep-react-datatable";
 import json from "./data";
 function getSelectRow(data) {
   console.log(data);
@@ -30,7 +33,7 @@ function Columns() {
     },
   ];
 }
-export default function Demo() {
+export default function Demotable() {
   const [data, setData] = useState(json);
   const [loading, setLoading] = useState(false);
   function search(key) {

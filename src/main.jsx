@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Demo from "../tests/Demo";
+import Demotable from "../tests/Demotable";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Demo />
+    <Demotable />
   </React.StrictMode>
 );
