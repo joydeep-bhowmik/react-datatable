@@ -1,0 +1,37 @@
+.datatable table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+.datatable article {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+.datatable table:first-child th {
+  border: 0 !important;
+}
+
+.datatable table td,
+.datatable table th {
+  border-top: 1px solid #ddd;
+  padding: 8px;
+}
+.datatable table th button {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+.datatable .search_input {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+.datatable table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  font-weight: normal;
+}
