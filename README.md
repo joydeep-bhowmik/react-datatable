@@ -136,6 +136,4 @@ We welcome contributions to the Datatable component! If you have any ideas, bug 
 ## License
 
 This component is open-source and available under the [MIT License](LICENSE).
-```
 
-Please replace `"joydeep-react-datatable"` with the actual name of your package when documenting your code. This README template provides a comprehensive guide on how to use and customize the Datatable component in your React application.
