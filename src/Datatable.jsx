@@ -268,34 +268,36 @@ export const Datatable = ({
           </tbody>
         </table>
       </article>
-      <button
-        onClick={() => {
-          if (apiParams.page && apiParams.page > 1) {
-            const updatedApiParams = {
-              ...apiParams,
-              page: apiParams.page - 1,
-            };
-            getApiParams(updatedApiParams);
-            setApiParams(updatedApiParams);
-          }
-        }}
-      >
-        Prepage
-      </button>
-      <button
-        onClick={() => {
-          if (apiParams.page) {
-            const updatedApiParams = {
-              ...apiParams,
-              page: apiParams.page + 1,
-            };
-            getApiParams(updatedApiParams);
-            setApiParams(updatedApiParams);
-          }
-        }}
-      >
-        NextPage
-      </button>
+      <section className="pagination">
+        <button
+          onClick={() => {
+            if (apiParams.page && apiParams.page > 1) {
+              const updatedApiParams = {
+                ...apiParams,
+                page: apiParams.page - 1,
+              };
+              getApiParams(updatedApiParams);
+              setApiParams(updatedApiParams);
+            }
+          }}
+        >
+          Previous
+        </button>
+        <button
+          onClick={() => {
+            if (apiParams.page) {
+              const updatedApiParams = {
+                ...apiParams,
+                page: apiParams.page + 1,
+              };
+              getApiParams(updatedApiParams);
+              setApiParams(updatedApiParams);
+            }
+          }}
+        >
+          Next
+        </button>
+      </section>
     </section>
   );
 };

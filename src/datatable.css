@@ -1,11 +1,16 @@
+:root {
+  --border-color: #ddd;
+  --border-radius: 8px;
+}
+
 .datatable table {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
 .datatable article {
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
 }
 .datatable table:first-child th {
   border: 0 !important;
@@ -13,7 +18,7 @@
 
 .datatable table td,
 .datatable table th {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border-color);
   padding: 8px;
 }
 .datatable table th button {
@@ -23,11 +28,25 @@
   border: 0;
   background-color: transparent;
 }
+.datatable .pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 5px 0px;
+}
+.datatable .pagination button {
+  background-color: transparent;
+  outline: 0;
+  border: 1px solid var(--border-color);
+  padding: 8px 10px;
+  border-radius: var(--border-radius);
+  margin-top: 10px;
+}
 
 .datatable .search_input {
   padding: 8px 10px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
 }
 .datatable table th {
   padding-top: 12px;
