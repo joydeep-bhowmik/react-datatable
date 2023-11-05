@@ -58,7 +58,7 @@ export const Datatable = ({
   loading,
   loader,
   getApiParams,
-  pagination = true,
+  pagination,
 }) => {
   const [sortDetails, setSortDetails] = useState({});
   const [selectedRows, setSelectedRows] = useState([]);
