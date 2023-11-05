@@ -126,7 +126,4 @@ We welcome contributions to the Datatable component! If you have any ideas, bug 
 ## License
 
 This component is open-source and available under the [MIT License](LICENSE).
-<<<<<<< HEAD
-=======
 
->>>>>>> 0b4949a4c803a81560bfce7e2f5f7ad4240f78d6
