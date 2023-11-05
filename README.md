@@ -128,7 +128,7 @@ The Datatable component includes two utility functions for searching and sorting
 
 ## Examples
 
-You can find example usage of the Datatable component in the provided code examples. These examples demonstrate how to integrate the component into your React application for displaying and manipulating data.
+You can find example usage of the Datatable component in this  [demo](https://github.com/joydeep-bhowmik/react-datatable/blob/main/tests/Demo.jsx). The example demonstrate how to integrate the component into your React application for displaying and manipulating data.
 
 ## Contributing
 
