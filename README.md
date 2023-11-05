@@ -1,5 +1,5 @@
 
-# Datatable Component Documentation
+# Documentation
 
 The Datatable component is a flexible and customizable table component for rendering and manipulating tabular data in React applications. It provides features like searching, sorting, and row selection, making it a versatile tool for displaying data.
 
