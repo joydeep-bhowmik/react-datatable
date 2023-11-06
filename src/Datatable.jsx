@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect, useRef, useState } from "react";
 
 export const defaultSearch = ({ data, key }) => {
   key = key.toLowerCase(); // Convert search term to lowercase for case-insensitive search
@@ -59,11 +58,18 @@ export const Datatable = ({
   loader,
   getApiParams,
   pagination,
+  noData,
+  perpage = 10,
 }) => {
   const [sortDetails, setSortDetails] = useState({});
   const [selectedRows, setSelectedRows] = useState([]);
-  const [apiParams, setApiParams] = useState({ key: "", page: 1 });
-
+  const [apiParams, setApiParams] = useState({
+    key: "",
+    page: 1,
+    perpage: perpage,
+  });
+  const inputValueRef = useRef(null);
+  let timeoutId;
   const toggleRowSelection = (row) => {
     const selectedRowsData = new Set(selectedRows);
     if (selectedRowsData.has(row)) {
@@ -85,31 +91,35 @@ export const Datatable = ({
   };
 
   const handleSort = (column) => {
-    if (sort) {
-      const currentSortDirection = sortDetails.sortDirection || "asc";
-      const newSortDirection = currentSortDirection === "asc" ? "desc" : "asc";
-      // Update sortDetails with the new sort direction
-      const updatedSortDetails = {
-        sortBy: column.key,
-        sortDirection: newSortDirection,
-      };
-      // Update apiParams for sorting
-      const updatedApiParams = {
-        ...apiParams,
-        ...updatedSortDetails,
-      };
-      // Call getApiParams to notify the parent component of the API parameters
-      if (getApiParams) {
-        getApiParams(updatedApiParams);
-      }
-      // Call the sort function with the new sort details
-      sort(column.key, newSortDirection, updatedSortDetails);
+    const currentSortDirection = sortDetails.sortDirection || "asc";
+    const newSortDirection = currentSortDirection === "asc" ? "desc" : "asc";
+    // Update sortDetails with the new sort direction
+    const updatedSortDetails = {
+      sortBy: column.key,
+      sortDirection: newSortDirection,
+    };
+    // Update apiParams for sorting
+    const updatedApiParams = {
+      ...apiParams,
+      ...updatedSortDetails,
+    };
+    // Call the sort function with the new sort details
 
+    setSortDetails(updatedSortDetails);
+    if (sort) {
+      sort(column.key, newSortDirection, updatedSortDetails);
+    } else {
       setApiParams(updatedApiParams);
-      setSortDetails(updatedSortDetails);
     }
   };
+  useEffect(() => {
+    inputValueRef.current.value = apiParams.key;
 
+    if (getApiParams) {
+      // Set a new timeout to update the state after a delay
+      getApiParams(apiParams);
+    }
+  }, [apiParams]);
   return (
     <section className="datatable">
       {headers && (
@@ -125,7 +135,7 @@ export const Datatable = ({
             style={{
               marginLeft: "auto",
               display: "flex",
-              gap: "10px",
+              gap: "5px",
               placeItems: "center",
             }}
           >
@@ -134,21 +144,26 @@ export const Datatable = ({
               type="search"
               placeholder="Search"
               className="search_input"
-              value={apiParams.key} // Use the key from your state
+              ref={inputValueRef}
               onChange={(e) => {
                 const newKey = e.target.value;
+                inputValueRef.current.value = newKey;
                 const updatedApiParams = { ...apiParams, key: newKey };
-
-                // If you're using state to manage apiParams, you should update it here
-                if (getApiParams) {
-                  getApiParams(updatedApiParams);
-                }
 
                 // If you also want to use this key for searching, call the search function here
                 if (search) {
                   search(newKey, data);
+                } else {
+                  // Clear the previous timeout, if any
+                  if (timeoutId) {
+                    clearTimeout(timeoutId);
+                  }
+
+                  // Set a new timeout to update the state after a delay
+                  timeoutId = setTimeout(() => {
+                    setApiParams(updatedApiParams);
+                  }, 300);
                 }
-                setApiParams(updatedApiParams);
               }}
             />
           </div>
@@ -261,7 +276,11 @@ export const Datatable = ({
             ) : (
               <tr>
                 <td colSpan={columns.length + (checkbox ? 1 : 0)}>
-                  No data available.
+                  {noData
+                    ? noData
+                    : loading
+                    ? "Loading..."
+                    : " No data available."}
                 </td>
               </tr>
             )}
@@ -277,7 +296,7 @@ export const Datatable = ({
                   ...apiParams,
                   page: apiParams.page - 1,
                 };
-                getApiParams(updatedApiParams);
+
                 setApiParams(updatedApiParams);
               }
             }}
@@ -285,6 +304,21 @@ export const Datatable = ({
           >
             Previous
           </button>
+          <select
+            onChange={(e) => {
+              const updatedApiParams = {
+                ...apiParams,
+                perpage: e.target.value,
+              };
+              setApiParams(updatedApiParams);
+            }}
+          >
+            {[perpage, 50, 100, 999999999999].map((a, i) => (
+              <option value={a} key={i}>
+                {a == 999999999999 ? "All" : a}
+              </option>
+            ))}
+          </select>
           <button
             onClick={() => {
               if (apiParams.page) {
@@ -292,7 +326,7 @@ export const Datatable = ({
                   ...apiParams,
                   page: apiParams.page + 1,
                 };
-                getApiParams(updatedApiParams);
+
                 setApiParams(updatedApiParams);
               }
             }}
