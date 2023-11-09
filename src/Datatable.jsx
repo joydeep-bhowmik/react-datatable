@@ -312,6 +312,7 @@ export const Datatable = ({
               };
               setApiParams(updatedApiParams);
             }}
+            disabled={data.length ? false : true}
           >
             {[perpage, 50, 100, 999999999999].map((a, i) => (
               <option value={a} key={i}>
