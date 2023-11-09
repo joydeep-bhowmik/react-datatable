@@ -1,11 +1,9 @@
-
-
-
 # Documentation
 
 The Datatable component is a flexible and customizable table component for rendering and manipulating tabular data in React applications. It provides features like searching, sorting, and row selection, making it a versatile tool for displaying data.
 
 ## Table of Contents
+
 - [Installation](#installation)
 - [Usage](#usage)
   - [Importing the Component](#importing-the-component)
@@ -14,6 +12,7 @@ The Datatable component is a flexible and customizable table component for rende
 - [API](#api)
   - [Props](#props)
   - [Utility Functions](#utility-functions)
+- [Default Styles](#default-styles)
 - [Examples](#examples)
 - [Contributing](#contributing)
 - [License](#license)
@@ -89,8 +88,6 @@ function getApiParams(data) {
 }
 ```
 
-
-
 ## API
 
 ### Props
@@ -108,6 +105,7 @@ Here are the available props for the Datatable component:
 - `getApiParams` (Function): Function to notify the parent component of API parameters.
 - `pagination` (Boolean): Enable pagination for the table.
 - `elements` (React Element): Additional elements to be displayed in the header.
+
 ### Utility Functions
 
 The Datatable component includes two utility functions for searching and sorting data:
@@ -115,9 +113,15 @@ The Datatable component includes two utility functions for searching and sorting
 - `defaultSearch({ data, key })`: Perform a case-insensitive search on the data array based on the search key.
 - `defaultSort({ data, key, direction })`: Sort the data array based on the specified key and direction.
 
+## default Styles
+
+```js
+import "joydeep-react-datatable/src/datatable.css";
+```
+
 ## Examples
 
-You can find example usage of the Datatable component in this  [demo](https://github.com/joydeep-bhowmik/react-datatable/blob/main/tests/Demo.jsx). The example demonstrate how to integrate the component into your React application for displaying and manipulating data.
+You can find example usage of the Datatable component in this [demo](https://github.com/joydeep-bhowmik/react-datatable/blob/main/tests/Demo.jsx). The example demonstrate how to integrate the component into your React application for displaying and manipulating data.
 
 ## Contributing
 
@@ -126,4 +130,3 @@ We welcome contributions to the Datatable component! If you have any ideas, bug 
 ## License
 
 This component is open-source and available under the [MIT License](LICENSE).
-
