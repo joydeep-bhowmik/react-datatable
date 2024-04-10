@@ -1,5 +1,6 @@
-```js
+# usage
 
+```js
  <Datatable
       columns={Columns()}
       data={data}
