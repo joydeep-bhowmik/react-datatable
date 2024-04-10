@@ -121,7 +121,7 @@ import "joydeep-react-datatable/src/datatable.css";
 
 ## Examples
 
-You can find example usage of the Datatable component in this [demo](https://github.com/joydeep-bhowmik/react-datatable/blob/main/tests/Demo.jsx). The example demonstrate how to integrate the component into your React application for displaying and manipulating data.
+You can find example usage of the Datatable component in this [demo](https://github.com/joydeep-bhowmik/react-datatable/blob/main/tests/Demotable.jsx). The example demonstrate how to integrate the component into your React application for displaying and manipulating data.
 
 ## Contributing
 
