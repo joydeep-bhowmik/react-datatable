@@ -1,18 +1,4 @@
-# Usage
 
-```js
- <Datatable
-      columns={Columns()}
-      data={data}
-      checkbox={true}
-      getSelectedData={getSelectRow}
-      search={search}
-      loader={<span>Loading...</span>}
-      loading={loading}
-      sort={sort}
-      getApiParams={getApiParams}
-    />
-```
 
 # Documentation
 
@@ -49,6 +35,20 @@ Import the Datatable component and the utility functions as follows:
 
 ```javascript
 import { Datatable, defaultSearch, defaultSort } from "joydeep-react-datatable";
+```
+
+```js
+ <Datatable
+      columns={Columns()}
+      data={data}
+      checkbox={true}
+      getSelectedData={getSelectRow}
+      search={search}
+      loader={<span>Loading...</span>}
+      loading={loading}
+      sort={sort}
+      getApiParams={getApiParams}
+    />
 ```
 
 ### Defining Columns
