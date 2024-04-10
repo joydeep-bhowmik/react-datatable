@@ -1,3 +1,18 @@
+```js
+
+ <Datatable
+      columns={Columns()}
+      data={data}
+      checkbox={true}
+      getSelectedData={getSelectRow}
+      search={search}
+      loader={<span>Loading...</span>}
+      loading={loading}
+      sort={sort}
+      getApiParams={getApiParams}
+    />
+```
+
 # Documentation
 
 The Datatable component is a flexible and customizable table component for rendering and manipulating tabular data in React applications. It provides features like searching, sorting, and row selection, making it a versatile tool for displaying data.
